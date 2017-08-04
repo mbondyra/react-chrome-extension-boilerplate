@@ -1,0 +1,17 @@
+.details {
+    border: 1px solid #cec7cd;
+    padding: 5px;
+    background: #fef;
+    font-size: 11px;
+    color: darkred;
+    text-align: center
+}
+
+.half {
+    margin:10px 0;
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    border-right: 1px solid #cec7cd;
+    box-sizing: border-box;
+}

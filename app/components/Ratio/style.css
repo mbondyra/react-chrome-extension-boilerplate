@@ -1,0 +1,10 @@
+.ratio {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: darkred;
+}
+
+.number {
+    font-size: 3em;
+}

@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from '../../app/containers/Root';
+import App from '../../app/containers/App';
 import './todoapp.css';
 
-chrome.storage.local.get('state', (obj) => {
-  const { state } = obj;
-  const initialState = JSON.parse(state || '{}');
-
-  const createStore = require('../../app/store/configureStore');
-
+chrome.storage.local.get('state', () => {
   ReactDOM.render(
-    <Root store={createStore(initialState)} />,
+    <App />,
     document.querySelector('#root')
   );
 });
