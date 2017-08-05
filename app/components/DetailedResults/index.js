@@ -8,12 +8,12 @@ const DetailedResults = ({ data }) => (
     </div>
     <div className={style.half}>
       {data.divident.map(el => (
-        <div key={el.number}>{el.name}: {el.number}</div>
+        <div key={el.name}>{el.name}: {el.number}</div>
       ))}
     </div>
     <div className={style.half}>
       {data.divisor.map(el => (
-        <div key={el.number}>{el.name}: {el.number}</div>
+        <div key={el.name}>{el.name}: {el.number}</div>
       ))}
     </div>
   </div>

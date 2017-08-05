@@ -3,3 +3,10 @@ h1 {
   margin: 8px 0 16px;
   text-align: center;
 }
+
+.loader {
+  background: red url(img/loader.gif);
+  height:20px;
+  width:20px;
+  margin:0 auto;
+}

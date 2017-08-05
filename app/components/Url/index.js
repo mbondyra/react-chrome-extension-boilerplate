@@ -9,7 +9,7 @@ const Url = ({url, onChange}) => {
   return (
     <div>
       <span>URL: </span>
-      <input className={style.input} value={url} onChange={onInputChange} />
+      <input disabled className={style.input} value={url} onChange={onInputChange} />
     </div>
   );
 };

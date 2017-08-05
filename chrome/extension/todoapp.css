@@ -1,5 +1,6 @@
 
 body {
+  min-height: 408px;
   padding: 8px 8px 16px;
   font: 16px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

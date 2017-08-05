@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './style.css';
 
-const Divident = ({ data, onChange }) => {
+const WordList = ({ data, onChange }) => {
   const onRemove = (e) => {
     const arr = data.filter(item => item !== e);
     onChange(arr);
@@ -34,4 +34,4 @@ const Divident = ({ data, onChange }) => {
   );
 };
 
-export default Divident;
+export default WordList;

@@ -1,3 +1,4 @@
+/*
 import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
@@ -50,3 +51,4 @@ describe('inject page (in github.com)', function test() {
     );
   });
 });
+*/
