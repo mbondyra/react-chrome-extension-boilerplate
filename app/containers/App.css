@@ -5,8 +5,51 @@ h1 {
 }
 
 .loader {
-  background: red url(img/loader.gif);
-  height:20px;
-  width:20px;
   margin:0 auto;
+}
+
+.again{
+  text-align: center;
+  background: darkred;
+  padding: 5px;
+  display:inline-block;
+  color: white;
+  margin: 10px auto;
+  cursor: pointer;
+}
+.again:hover{
+  background:red;
+}
+
+
+@keyframes anim {
+   0% {
+     -webkit-transform: rotate(0);
+     transform: rotate(0);
+   }
+   100% {
+     -webkit-transform: rotate(360deg);
+     transform: rotate(360deg);
+   }
+ }
+
+.ring {
+  margin: 0 auto;
+  position: relative;
+}
+.ring div {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+  border: 20px solid #000;
+  border-color: #7b2323 transparent #7b2323 transparent;
+  animation: anim 3.3s linear infinite;
+}
+.ring {
+  width: 95px !important;
+  height: 95px !important;
+  transform: translate(-47.5px, -47.5px) scale(0.475) translate(47.5px, 47.5px);
 }

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import $ from 'jquery';
 import style from './App.css';
 import Url from '../components/Url';
 import WordList from '../components/WordList';
 import Ratio from '../components/Ratio';
 import DetailedResults from '../components/DetailedResults';
-
 
 const getNumberOfOccurence = (divident, divisor) => {
   const str = document.querySelector('.core-rail').innerHTML;
@@ -25,8 +25,22 @@ const getNumberOfOccurence = (divident, divisor) => {
 };
 
 const scanPage = () => {
-  document.body.scrollIntoView(false);
-  setTimeout(() => { document.body.scrollIntoView(true); }, 3000);
+  const clear = () => {
+    clearInterval(window.scrollDown);
+    document.body.scrollTop = 0;
+  };
+  if (!window.scrollDown) {
+    window.scrollDown = setInterval(() => {
+      window.scrollTo(0, window.pageYOffset + 100);
+    }, 100);
+    const b = window.onmousewheel;
+    window.onmousewheel = (ev) => {
+      ev.wheelDeltaY > 0 && (window.scrollDown = clear(), window.onmousewheel = b),
+      b && b.call(window, ev);
+    };
+  } else {
+    clear();
+  }
 };
 
 export default class App extends Component {
@@ -40,6 +54,7 @@ export default class App extends Component {
       loading: true,
       ratio: 0
     };
+    this.checkRatio = this.checkRatio.bind(this);
     this.onUrlChange = this.onUrlChange.bind(this);
     this.onDividentChange = this.onDividentChange.bind(this);
     this.onDivisorChange = this.onDivisorChange.bind(this);
@@ -54,13 +69,10 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      loading: true
-    });
     this.scanPage();
     setTimeout(
       () => (this.checkRatio()),
-    5000);
+      1000);
   }
 
   onUrlChange(url) {
@@ -109,7 +121,7 @@ export default class App extends Component {
       {
         code: string
       }
-    )
+    );
   }
 
   checkRatio() {
@@ -123,7 +135,7 @@ export default class App extends Component {
         code: string
       },
       (results) => {
-        this.setState({ result: results[0], loading: false });
+        this.setState({result: results[0], loading: false});
       });
   }
 
@@ -134,18 +146,25 @@ export default class App extends Component {
         <Url url={this.state.url} onChange={this.onUrlChange} />
         <WordList data={this.state.divident} onChange={this.onDividentChange} />
         <WordList data={this.state.divisor} onChange={this.onDivisorChange} />
+        <div className={style.again} onClick={this.checkRatio}>refresh</div>
         {
           this.state.loading ?
-          <div className={style.loader} /> :
-          (
-            <div>
-              <Ratio data={this.getRatio()} />
-              {
-                this.state.result &&
-                <DetailedResults data={this.state.result} />
-              }
-            </div>
-          )
+            (
+              <div className={style.loader}>
+                <div style={{width: '100%', height: '100%'}} className={style.ring}>
+                  <div />
+                </div>
+              </div>
+            ) :
+            (
+              <div>
+                <Ratio data={this.getRatio()}/>
+                {
+                  this.state.result &&
+                  <DetailedResults data={this.state.result}/>
+                }
+              </div>
+            )
         }
       </div>
     );
